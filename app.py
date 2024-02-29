@@ -5,74 +5,12 @@ import plotly.graph_objects as go
 import numpy as np
 import utils
 
-colors = [
-    '#FFFFFF',
-    '#222A2A',
-    '#FB0D0D',
-    '#0D2A63',
-    '#511CFB',
-    '#EB663B',
-    '#E15F99',
-    '#FFC000',
-    '#2E91E5',
-    '#1CA71C',
-    '#F2F2F2',
-    '#808080',
-    '#FFB9B9',
-    '#D6DCE4',
-    '#D9E1F2',
-    '#FCE4D6',
-    '#FFC5FB',
-    '#FFF2CC',
-    '#DDEBF7',
-    '#E2EFDA',
-    '#D9D9D9',
-    '#595959',
-    '#FD5F5F',
-    '#ACB9CA',
-    '#B4C6E7',
-    '#F8CBAD',
-    '#FF89FC',
-    '#FFE699',
-    '#BDD7EE',
-    '#C6E0B4',
-    '#BFBFBF',
-    '#404040',
-    '#F03838',
-    '#8497B0',
-    '#8EA9DB',
-    '#F4B084',
-    '#FE1EDE',
-    '#FFD966',
-    '#9BC2E6',
-    '#A9D08E',
-    '#A6A6A6',
-    '#262626',
-    '#E60000',
-    '#333F4F',
-    '#305496',
-    '#C65911',
-    '#CE04C0',
-    '#BF8F00',
-    '#2F75B5',
-    '#548235',
-    '#808080',
-    '#0D0D0D',
-    '#A20000',
-    '#222B35',
-    '#203764',
-    '#833C0C',
-    '#820479',
-    '#806000',
-    '#1F4E78',
-    '#375623',
-    'gray'
-]
+colors = ['#003366','#336699','#3366CC','#003399','#000099','#0000CC','#000066','#006666','#006699','#0099CC','#0066CC','#0033CC','#0000FF','#3333FF','#333399','#669999','#009999','#33CCCC','#00CCFF','#0099FF','#0066FF','#3366FF','#3333CC','#666699','#339966','#00CC99','#00FFCC','#00FFFF','#33CCFF','#3399FF','#6699FF','#6666FF','#6600FF','#6600CC','#339933','#00CC66','#00FF99','#66FFCC','#66FFFF','#66CCFF','#99CCFF','#9999FF','#9966FF','#9933FF','#9900FF','#006600','#00CC00','#00FF00','#66FF99','#99FFCC','#CCFFFF','#CCCCFF','#CC99FF','#CC66FF','#CC33FF','#CC00FF','#9900CC','#003300','#009933','#33CC33','#66FF66','#99FF99','#CCFFCC','#FFFFFF','#FFCCFF','#FF99FF','#FF66FF','#FF00FF','#CC00CC','#660066','#336600','#009900','#66FF33','#99FF66','#CCFF99','#FFFFCC','#FFCCCC','#FF99CC','#FF66CC','#FF33CC','#CC0099','#993399','#333300','#669900','#99FF33','#CCFF66','#FFFF99','#FFCC99','#FF9999','#FF6699','#FF3399','#CC3399','#990099','#666633','#99CC00','#CCFF33','#FFFF66','#FFCC66','#FF9966','#FF6666','#FF0066','#CC6699','#993366','#999966','#CCCC00','#FFFF00','#FFCC00','#FF9933','#FF6600','#FF5050','#CC0066','#660033','#996633','#CC9900','#FF9900','#CC6600','#FF3300','#FF0000','#CC0000','#990033','#663300','#996600','#CC3300','#993300','#990000','#800000','#993333']
 
 # these are the predefined chunk lengths. This is basically the number of
 # swatches per line. The first line and last line have 5 swatches
 # the sum of all swatches has to correspond to the number of colors (61)
-chunk_lengths = [5, 6, 7, 8, 9, 8, 7, 6, 5]
+chunk_lengths = [7, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 7]
 
 # chunk the color list into the corresponding swatches per row
 chunked_colors = utils.chunk(colors, chunk_lengths)
