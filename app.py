@@ -53,26 +53,16 @@ app.layout = html.Div(
 )
 
 
-@app.callback(
+app.clientside_callback(
+    """
+    function(click_data, current_styles) {
+        return dash_clientside.clientside.updateStyle(click_data, current_styles);
+    }
+    """,
     Output({'type': 'outer', 'index': ALL}, 'style'),
-    Input('graph', 'clickData'),
-    State({'type': 'outer', 'index': ALL}, 'style'),
-    prevent_initial_call=True
+    [Input('graph', 'clickData')],
+    [State({'type': 'outer', 'index': ALL}, 'style')]
 )
-def do(click_data, current_styles):
-    if not click_data:
-        raise PreventUpdate
-
-    # which curve has been clicked?
-    clicked = click_data['points'][0]['curveNumber']
-
-    # change style at corresponding index
-    for counter, _ in enumerate(current_styles):
-        if counter == clicked:
-            current_styles[counter].update({'background-color': 'red'})
-        else:
-            current_styles[counter].update({'background-color': 'black'})
-    return current_styles
 
 
 if __name__ == "__main__":
