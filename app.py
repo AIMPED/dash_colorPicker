@@ -46,7 +46,8 @@ app.layout = html.Div(
         html.Div(
             dcc.Graph(id='graph', figure=fig),
             className='col-8 d-flex justify-content-center'
-        )
+        ),
+        dcc.Store(id='last_index'),
     ],
     className='row min-vh-100'
 )
@@ -54,13 +55,16 @@ app.layout = html.Div(
 
 app.clientside_callback(
     """
-    function(click_data, current_styles) {
-        return dash_clientside.clientside.updateStyle(click_data, current_styles);
+    function(click_data, current_styles, last_clicked) {
+        return dash_clientside.clientside.updateStyle(click_data, current_styles, last_clicked);
     }
     """,
     Output({'type': 'outer', 'index': ALL}, 'style'),
-    [Input('graph', 'clickData')],
-    [State({'type': 'outer', 'index': ALL}, 'style')]
+    Output('last_index', 'data'),
+    Input('graph', 'clickData'),
+    State({'type': 'outer', 'index': ALL}, 'style'),
+    State('last_index', 'data'),
+    prevent_initial_call=True
 )
 
 
